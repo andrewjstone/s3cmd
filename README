@@ -1,3 +1,6 @@
+# Warning
+This is a hacked version to allow local proxy testing over SSL of Riak CS only. This allows local testing of Riak CS over SSL without the need of setting up wildcard dns. It is not intended to be used for any other purpose.
+
 S3cmd tool for Amazon Simple Storage Service (S3)
 =================================================
 

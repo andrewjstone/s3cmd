@@ -15,7 +15,7 @@ class http_connection(object):
         self.id = id
         self.counter = 0
         if cfg.proxy_host != "":
-            self.c = httplib.HTTPConnection(cfg.proxy_host, cfg.proxy_port)
+            self.c = httplib.HTTPSConnection(cfg.proxy_host, cfg.proxy_port)
         elif not ssl:
             self.c = httplib.HTTPConnection(hostname)
         else:
@@ -33,9 +33,7 @@ class ConnMan(object):
             ssl = cfg.use_https
         conn = None
         if cfg.proxy_host != "":
-            if ssl:
-                raise ParameterError("use_ssl=True can't be used with proxy")
-            conn_id = "proxy://%s:%s" % (cfg.proxy_host, cfg.proxy_port)
+            conn_id = "https://%s:%s" % (cfg.proxy_host, cfg.proxy_port)
         else:
             conn_id = "http%s://%s" % (ssl and "s" or "", hostname)
         ConnMan.conn_pool_sem.acquire()

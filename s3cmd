@@ -1509,9 +1509,6 @@ def run_configure(config_file, args):
             for option in options:
                 prompt = option[1]
                 ## Option-specific handling
-                if option[0] == 'proxy_host' and getattr(cfg, 'use_https') == True:
-                    setattr(cfg, option[0], "")
-                    continue
                 if option[0] == 'proxy_port' and getattr(cfg, 'proxy_host') == "":
                     setattr(cfg, option[0], 0)
                     continue
